@@ -386,10 +386,26 @@
 }
 </style>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 
-const prices = {
+const apiUrl: string = import.meta.env.VITE_API_BASE_URL;
+
+// --- 1. Define Price Types ---
+type TreeTypeKey = "Nordmann" | "Spruce";
+type SizeKey = "Small" | "Medium" | "Large" | "XLarge";
+type PackageKey = "Basic" | "Extra" | "Full";
+type DeliveryKey = "Standard" | "Fast" | "Express";
+
+interface Prices {
+  Tree: Record<TreeTypeKey, number>;
+  Size: Record<SizeKey, number>;
+  Package: Record<PackageKey, number>;
+  Delivery: Record<DeliveryKey, number>;
+  treeStand: number;
+}
+
+const prices: Prices = {
   Tree: { Nordmann: 1, Spruce: 0.7 },
   Size: { Small: 35.87, Medium: 49.92, Large: 65.76, XLarge: 79.89 },
   Package: { Basic: 33.23, Extra: 41.36, Full: 55.78 },
@@ -397,10 +413,37 @@ const prices = {
   treeStand: 35.99
 }
 
-const step = ref(1)
-const error = ref("")
+// --- 2. Define Order Types ---
+type OrderTree = 'nordmann' | 'spruce';
+type OrderSize = 's' | 'm' | 'l' | 'xl';
+type OrderPackage = 'basic' | 'extra' | 'full';
+type OrderDelivery = 'standard' | 'fast' | 'express';
+type OrderPayment = 'paypal' | 'stripe' | 'cash' | '';
 
-const order = ref({
+interface Customer {
+  first_name: string;
+  last_name: string;
+  address: string;
+  postal_code: string;
+  city: string;
+  phone: string;
+  email: string;
+}
+
+interface Order {
+  customer: Customer;
+  tree: OrderTree;
+  size: OrderSize;
+  package: OrderPackage;
+  delivery: OrderDelivery;
+  tree_stand: boolean;
+  payment_method: OrderPayment;
+}
+
+// --- 3. Define Reactive State ---
+const step = ref<number>(1)
+const error = ref<string>("")
+const order = ref<Order>({
   customer: {
     first_name: "", last_name: "", address: "",
     postal_code: "", city: "", phone: "", email: ""
@@ -412,27 +455,46 @@ const order = ref({
   tree_stand: false,
   payment_method: ""
 })
+interface PaymentResponse {
+    checkout_url: string;
+    order_id: string;
+}
+const paymentResponse = ref<PaymentResponse | null>(null)
+
+// --- 4. Define Mappers with Types ---
+const treeMap: Record<OrderTree, TreeTypeKey> = { nordmann: "Nordmann", spruce: "Spruce" }
+const sizeMap: Record<OrderSize, SizeKey> = { s: "Small", m: "Medium", l: "Large", xl: "XLarge" }
+const packageMap: Record<OrderPackage, PackageKey> = { basic: "Basic", extra: "Extra", full: "Full" }
+const deliveryMap: Record<OrderDelivery, DeliveryKey> = { standard: "Standard", fast: "Fast", express: "Express" }
+
 
 /* PRICE CALCULATION */
-const totalPrice = computed(() => {
-  let total = 0
-  const treeMap = { nordmann: "Nordmann", spruce: "Spruce" }
-  const multiplier = prices.Tree[treeMap[order.value.tree]]
-  const sizeMap = { s: "Small", m: "Medium", l: "Large", xl: "XLarge" }
-  total += prices.Size[sizeMap[order.value.size]] * multiplier
-  const packageMap = { basic: "Basic", extra: "Extra", full: "Full" }
+const totalPrice = computed((): number => {
+  let total: number = 0
+  
+  // Tree & Size
+  const treeMultiplier: number = prices.Tree[treeMap[order.value.tree]]
+  total += prices.Size[sizeMap[order.value.size]] * treeMultiplier
+  
+  // Package
   total += prices.Package[packageMap[order.value.package]]
-  const deliveryMap = { standard: "Standard", fast: "Fast", express: "Express" }
+  
+  // Delivery
   total += prices.Delivery[deliveryMap[order.value.delivery]]
-  if (order.value.tree_stand) total += prices.treeStand
+  
+  // Tree Stand
+  if (order.value.tree_stand) {
+    total += prices.treeStand
+  }
+  
   return total
 })
 
 /* INPUT VALIDATION */
-const validateStep2 = () => {
+const validateStep2 = (): void => {
   error.value = ""
 
-  const c = order.value.customer
+  const c: Customer = order.value.customer
 
   if (!c.first_name || !c.last_name || !c.address || !c.city ||
     !c.postal_code || !c.email || !c.phone) {
@@ -440,16 +502,19 @@ const validateStep2 = () => {
     return
   }
 
+  // Email validation
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)) {
     error.value = "Bitte eine gültige Email-Adresse eingeben."
     return
   }
 
+  // Phone validation
   if (c.phone.length < 6) {
     error.value = "Telefonnummer ist zu kurz."
     return
   }
 
+  // Postal code validation
   if (!/^\d{4,6}$/.test(c.postal_code)) {
     error.value = "PLZ muss aus Zahlen bestehen."
     return
@@ -459,22 +524,31 @@ const validateStep2 = () => {
 }
 
 /* PAYMENT */
-const paymentResponse = ref(null)
-
-const selectPayment = async (method) => {
+const selectPayment = async (method: OrderPayment): Promise<void> => {
   order.value.payment_method = method
 
-  const res = await fetch('http://localhost:8000/checkout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(order.value)
-  })
+  try {
+    const res = await fetch(`${apiUrl}/checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order.value)
+    })
 
-  paymentResponse.value = await res.json()
-  step.value = 5
+    if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data: PaymentResponse = await res.json()
+    paymentResponse.value = data
+    step.value = 5 // Assuming step 5 is the final confirmation/redirect step
+  } catch (e) {
+    console.error("Payment submission failed:", e)
+    // Optionally set an error state for the user
+    // error.value = "Payment processing failed. Please try again."
+  }
 }
 
-const proceedToPayment = () => {
+const proceedToPayment = (): void => {
   if (paymentResponse.value?.checkout_url) {
     sessionStorage.setItem("order_id", paymentResponse.value.order_id)
     window.location.href = paymentResponse.value.checkout_url

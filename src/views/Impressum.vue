@@ -33,8 +33,10 @@
 
     <h2 class="text-lg font-medium mt-6">Haftung für Inhalte</h2>
     <p class="mt-2">
-      Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-      Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+      Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+      Gesetzen verantwortlich.
+      Nach §§ 8 bis 10 TMG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+      überwachen.
     </p>
 
     <h2 class="text-lg font-medium mt-6">Haftung für Links</h2>
@@ -45,7 +47,8 @@
 
     <h2 class="text-lg font-medium mt-6">Urheberrecht</h2>
     <p class="mt-2">
-      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+      Urheberrecht.
     </p>
 
     <footer class="text-sm text-white/80 mt-8">
@@ -54,11 +57,9 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'ImpressumPage',
-  metaInfo: {
-    title: 'Impressum - Weihnachtsbaum GmbH'
-  }
+<script lang="ts">
+const name = 'ImpressumPage'
+const metaInfo = {
+  title: 'Impressum - Weihnachtsbaum GmbH'
 }
 </script>

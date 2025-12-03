@@ -45,7 +45,7 @@
 
                     <h2 class="mt-4 text-base font-medium text-[#052809] dark:text-white">Status</h2>
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Einfach und bequem bestellung verfolgen</p>
-                    <RouterLink to="/order" class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">Live Status</RouterLink>
+                    <RouterLink to="/status" class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">Live Status</RouterLink>
                 </div>
 
                 <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-[#052809]">
@@ -63,6 +63,6 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from 'vue-router'
 </script>

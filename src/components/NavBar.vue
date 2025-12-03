@@ -1,29 +1,36 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
-const activeSection = ref('hero')
-const mobileMenuOpen = ref(false)
+// Explicitly type the ref values
+const activeSection = ref<string>('hero')
+const mobileMenuOpen = ref<boolean>(false)
 
+// Function signature simplified to avoid TSX parsing errors on return type
 const toggleMobileMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value
 }
 
 onMounted(() => {
-    const sections = document.querySelectorAll('section')
+    // Explicitly type the NodeList returned by querySelectorAll
+    const sections: NodeListOf<HTMLElement> = document.querySelectorAll('section')
 
+    // Explicitly type the Intersection Observer Callback function, simplifying 
+    // the arrow function syntax to prevent TSX errors.
     const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
+        (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry: IntersectionObserverEntry) => {
                 if (entry.isIntersecting) {
                     activeSection.value = entry.target.id
                 }
             })
         },
+        // IntersectionObserverInit is the default type for the options object
         { threshold: 0.6 }
     )
 
-    sections.forEach(section => observer.observe(section))
+    // Explicitly type the section element in the loop
+    sections.forEach((section: HTMLElement) => observer.observe(section))
 })
 </script>
 
