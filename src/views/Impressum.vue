@@ -57,7 +57,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 const name = 'ImpressumPage'
 const metaInfo = {
   title: 'Impressum - Weihnachtsbaum GmbH'
