@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Datenschutz from '../views/Datenschutz.vue'
+import Impressum from '../views/Impressum.vue'
 import Status from '../views/Status.vue'
 import Order from '../views/Order.vue'
 
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/datenschutz',
       name: 'datenschutz',
       component: Datenschutz,
+    },
+    {
+      path: '/impressum',
+      name: 'impressum',
+      component: Impressum,
     },
   ],
 })

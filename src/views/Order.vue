@@ -244,10 +244,21 @@
 
         <button class="btn-primary" :disabled="!order.payment_method"
           :class="{ 'opacity-50 cursor-not-allowed': !order.payment_method }"
-          @click="order.payment_method && selectPayment(order.payment_method)">
+          @click="order.payment_method && clickToPayment()">
           Continue
         </button>
       </div>
+    </div>
+
+    <!-- STEP 4 – Wait for Checkout -->
+    <div v-if="step === 4" class="space-y-6 bg-white/10 p-5 rounded-xl shadow">
+      <span class="flex items-center gap-2">
+        <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+        Processing...
+      </span>
     </div>
 
   </div>
@@ -456,8 +467,8 @@ const order = ref<Order>({
   payment_method: ""
 })
 interface PaymentResponse {
-    checkout_url: string;
-    order_id: string;
+  checkout_url: string;
+  order_id: string;
 }
 const paymentResponse = ref<PaymentResponse | null>(null)
 
@@ -471,22 +482,22 @@ const deliveryMap: Record<OrderDelivery, DeliveryKey> = { standard: "Standard", 
 /* PRICE CALCULATION */
 const totalPrice = computed((): number => {
   let total: number = 0
-  
+
   // Tree & Size
   const treeMultiplier: number = prices.Tree[treeMap[order.value.tree]]
   total += prices.Size[sizeMap[order.value.size]] * treeMultiplier
-  
+
   // Package
   total += prices.Package[packageMap[order.value.package]]
-  
+
   // Delivery
   total += prices.Delivery[deliveryMap[order.value.delivery]]
-  
+
   // Tree Stand
   if (order.value.tree_stand) {
     total += prices.treeStand
   }
-  
+
   return total
 })
 
@@ -524,9 +535,11 @@ const validateStep2 = (): void => {
 }
 
 /* PAYMENT */
-const selectPayment = async (method: OrderPayment): Promise<void> => {
+const selectPayment = (method: OrderPayment) => {
   order.value.payment_method = method
+}
 
+const clickToPayment = async (): Promise<void> => {
   try {
     const res = await fetch(`${apiUrl}/checkout`, {
       method: 'POST',
@@ -535,16 +548,16 @@ const selectPayment = async (method: OrderPayment): Promise<void> => {
     })
 
     if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
 
     const data: PaymentResponse = await res.json()
     paymentResponse.value = data
-    step.value = 5 // Assuming step 5 is the final confirmation/redirect step
+
+    step.value = 4
+    proceedToPayment()
   } catch (e) {
     console.error("Payment submission failed:", e)
-    // Optionally set an error state for the user
-    // error.value = "Payment processing failed. Please try again."
   }
 }
 
@@ -552,6 +565,9 @@ const proceedToPayment = (): void => {
   if (paymentResponse.value?.checkout_url) {
     sessionStorage.setItem("order_id", paymentResponse.value.order_id)
     window.location.href = paymentResponse.value.checkout_url
+  }
+  else {
+    step.value = 3
   }
 }
 </script>
