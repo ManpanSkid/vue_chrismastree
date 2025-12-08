@@ -5,16 +5,11 @@
 
       <div v-if="!orderId && !loading" class="space-y-4">
         <p class="text-gray-700 text-center">Enter your email to look up your order:</p>
-        <input
-          v-model="email"
-          type="email"
+        <input v-model="email" type="email"
           class="w-full p-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-green-700 focus:outline-none"
-          placeholder="Your email"
-        />
-        <button
-          @click="fetchOrderByEmail"
-          class="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-xl text-lg font-semibold shadow-md transition"
-        >
+          placeholder="Your email" />
+        <button @click="fetchOrderByEmail"
+          class="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-xl text-lg font-semibold shadow-md transition">
           Find Order
         </button>
       </div>
@@ -60,14 +55,12 @@
           </div>
         </div>
 
-        <button
-          @click="reset"
-          class="w-full mt-4 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-xl text-lg font-semibold shadow transition"
-        >
+        <button @click="reset"
+          class="w-full mt-4 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-xl text-lg font-semibold shadow transition">
           Look Up Another Order
         </button>
       </div>
-      
+
       <div v-if="error" class="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-xl text-center">
         {{ error }}
       </div>
@@ -82,13 +75,13 @@ const apiUrl: string = import.meta.env.VITE_API_BASE_URL;
 
 // 1. Define the Order Interface
 interface Order {
-    id: string;
-    first_name: string;
-    last_name: string;
-    tree: string;
-    package: string;
-    delivery: string;
-    status: string;
+  id: string;
+  first_name: string;
+  last_name: string;
+  tree: string;
+  package: string;
+  delivery: string;
+  status: string;
 }
 
 // 2. Apply explicit types to refs
@@ -108,17 +101,16 @@ async function fetchOrderById(id: string): Promise<void> {
   try {
     loading.value = true
     const res = await fetch(`${apiUrl}/orders/${id}`)
-    
+
     if (!res.ok) {
-        // Assume API returns JSON even on 404/400 for a detailed message
-        // For this example, we'll use a generic not found error
-        throw new Error('Order not found or an error occurred.')
+      sessionStorage.clear()
+      throw new Error('Order not found or an error occurred.')
     }
-    
+
     // Type assertion for the fetched data
     const data: Order = await res.json()
     order.value = data
-    
+
   } catch (e: any) {
     console.error(e)
     error.value = e.message || 'Could not connect to the order service.'
@@ -135,17 +127,17 @@ async function fetchOrderByEmail(): Promise<void> {
   try {
     loading.value = true
     const res = await fetch(`${apiUrl}/orders/${email.value}`) // Adjusted endpoint to be more realistic for email lookup
-    
+
     if (!res.ok) {
-        throw new Error('No order found for that email address.')
+      throw new Error('No order found for that email address.')
     }
-    
+
     // Type assertion for the fetched data
     const data: Order = await res.json()
     order.value = data
     orderId.value = data.id
     sessionStorage.setItem('order_id', data.id)
-    
+
   } catch (e: any) {
     console.error(e)
     error.value = e.message || 'Could not connect to the order service.'
