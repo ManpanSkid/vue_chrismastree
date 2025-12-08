@@ -4,28 +4,21 @@
 
     <h2 class="text-lg font-medium mt-6">Angaben gemäß § 5 TMG</h2>
     <p class="mt-2">
-      Weihnachtsbaum GmbH<br>
-      Musterstraße 1<br>
-      12345 Musterstadt<br>
+      Dein Weihnachstbaum<br>
+      Christburgerstraße 20<br>
+      10405 Berlin<br>
       Deutschland
     </p>
 
     <h2 class="text-lg font-medium mt-6">Kontakt</h2>
     <p class="mt-2">
-      Telefon: 01234 / 567890<br>
-      E‑Mail: <a href="mailto:info@weihnachtsbaum.example" class="underline">info@weihnachtsbaum.example</a>
+      Telefon: +49 151 2954 5560<br>
+      E‑Mail: <a href="mailto:info@deinweihnachtsbaum.de" class="underline">info@deinweihnachtsbaum.de</a>
     </p>
 
     <h2 class="text-lg font-medium mt-6">Vertreten durch</h2>
     <p class="mt-2">
-      Geschäftsführer: Max Mustermann
-    </p>
-
-    <h2 class="text-lg font-medium mt-6">Registereintrag</h2>
-    <p class="mt-2">
-      Eintragung im Handelsregister.<br>
-      Registergericht: Amtsgericht Musterstadt<br>
-      Registernummer: HRB 123456
+      Geschäftsführer: Raffael Schroth
     </p>
 
     <h2 class="text-lg font-medium mt-6">Umsatzsteuer-ID</h2>

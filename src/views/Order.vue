@@ -3,31 +3,31 @@
 
     <!-- Price -->
     <div class="text-right text-lg font-bold text-green-300">
-      Current Price: €{{ totalPrice.toFixed(2) }}
+      Aktueller Preis: €{{ totalPrice.toFixed(2) }}
     </div>
 
     <!-- STEP 1 – TREE & SPECS -->
     <div v-if="step === 1" class="space-y-6 bg-white/10 p-5 rounded-xl shadow">
-      <h2 class="text-xl font-semibold mb-4">Select Tree & Specs</h2>
+      <h2 class="text-xl font-semibold mb-4">Baum & Eigenschaften auswählen</h2>
 
       <!-- TREE TYPE -->
       <div>
-        <h3 class="font-medium mb-3">Tree Type (multiplier)</h3>
+        <h3 class="font-medium mb-3">Baumart</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
           <!-- Nordmann Card -->
           <div class="option-card" :class="{ active: order.tree === 'nordmann' }" @click="order.tree = 'nordmann'">
-            <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Nordmann tree" />
+            <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Nordmann Baum" />
             <div class="text-center font-bold mt-2">Nordmann</div>
-            <div class="text-sm text-gray-200">Strong needles, premium quality</div>
+            <div class="text-sm text-gray-200">Starke Nadeln, Premium-Qualität</div>
           </div>
 
           <!-- Spruce Card -->
           <div class="option-card" :class="{ active: order.tree === 'spruce' }" @click="order.tree = 'spruce'">
-            <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Spruce tree" />
-            <div class="text-center font-bold mt-2">Spruce</div>
-            <div class="text-sm text-gray-200">Traditional and aromatic</div>
+            <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Fichte" />
+            <div class="text-center font-bold mt-2">Fichte</div>
+            <div class="text-sm text-gray-200">Traditionell und aromatisch</div>
           </div>
 
         </div>
@@ -35,22 +35,22 @@
 
       <!-- SIZE -->
       <div>
-        <h3 class="font-medium mb-3">Tree Size</h3>
+        <h3 class="font-medium mb-3">Baumgröße</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
 
           <div class="option-card" :class="{ active: order.size === 's' }" @click="order.size = 's'">
-            <div class="font-bold text-center">Small</div>
+            <div class="font-bold text-center">Klein</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Small }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 'm' }" @click="order.size = 'm'">
-            <div class="font-bold text-center">Medium</div>
+            <div class="font-bold text-center">Mittel</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Medium }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 'l' }" @click="order.size = 'l'">
-            <div class="font-bold text-center">Large</div>
+            <div class="font-bold text-center">Groß</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Large }}</div>
           </div>
 
@@ -64,25 +64,25 @@
 
       <!-- PACKAGE -->
       <div>
-        <h3 class="font-medium mb-3">Package</h3>
+        <h3 class="font-medium mb-3">Paket</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
           <div class="option-card" :class="{ active: order.package === 'basic' }" @click="order.package = 'basic'">
             <div class="font-bold text-center">Basic</div>
-            <div class="text-sm text-gray-200 text-center">Just the tree</div>
+            <div class="text-sm text-gray-200 text-center">Nur der Baum</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Package.Basic }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.package === 'extra' }" @click="order.package = 'extra'">
             <div class="font-bold text-center">Extra</div>
-            <div class="text-sm text-gray-200 text-center">Setup included</div>
+            <div class="text-sm text-gray-200 text-center">Aufbau inklusive</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Package.Extra }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.package === 'full' }" @click="order.package = 'full'">
             <div class="font-bold text-center">Full</div>
-            <div class="text-sm text-gray-200 text-center">Setup + removal</div>
+            <div class="text-sm text-gray-200 text-center">Aufbau + Abholung</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Package.Full }}</div>
           </div>
 
@@ -91,27 +91,27 @@
 
       <!-- DELIVERY -->
       <div>
-        <h3 class="font-medium mb-3">Delivery</h3>
+        <h3 class="font-medium mb-3">Lieferung</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
           <div class="option-card" :class="{ active: order.delivery === 'standard' }"
             @click="order.delivery = 'standard'">
             <div class="text-center font-bold">Standard</div>
-            <div class="text-gray-200 text-sm text-center">2–3 days</div>
+            <div class="text-gray-200 text-sm text-center">2–3 Tage</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Standard }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.delivery === 'fast' }" @click="order.delivery = 'fast'">
-            <div class="text-center font-bold">Fast</div>
-            <div class="text-gray-200 text-sm text-center">Next day</div>
+            <div class="text-center font-bold">Schnell</div>
+            <div class="text-gray-200 text-sm text-center">Nächster Tag</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Fast }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.delivery === 'express' }"
             @click="order.delivery = 'express'">
             <div class="text-center font-bold">Express</div>
-            <div class="text-gray-200 text-sm text-center">Same day</div>
+            <div class="text-gray-200 text-sm text-center">Gleicher Tag</div>
             <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Express }}</div>
           </div>
 
@@ -124,8 +124,8 @@
           class="flex items-center gap-3 cursor-pointer bg-white/5 p-3 rounded-lg border border-white/10 hover:bg-white/20 transition">
           <input type="checkbox" class="form-checkbox h-5 w-5" v-model="order.tree_stand" />
           <div>
-            <div class="font-bold">Tree Stand</div>
-            <div class="text-sm text-gray-200">Stable metal stand</div>
+            <div class="font-bold">Christbaumständer</div>
+            <div class="text-sm text-gray-200">Stabiler Metallständer</div>
             <div class="text-green-300">€{{ prices.treeStand }}</div>
           </div>
         </label>
@@ -134,7 +134,7 @@
       <!-- NEXT -->
       <button class="px-4 py-2 text-base font-bold rounded bg-green-400 text-black hover:bg-green-300 w-full"
         @click="step = 2">
-        Next
+        Weiter
       </button>
 
     </div>
@@ -144,7 +144,7 @@
     <!-- STEP 2 – Personal Data -->
     <div v-if="step === 2" class="bg-white/10 p-6 rounded-xl shadow space-y-6">
 
-      <h2 class="text-xl font-semibold text-center">Your Details</h2>
+      <h2 class="text-xl font-semibold text-center">Ihre Daten</h2>
 
       <div v-if="error" class="text-red-300 text-sm text-center">{{ error }}</div>
 
@@ -154,13 +154,13 @@
         <!-- First Name -->
         <div class="floating-group">
           <input v-model="order.customer.first_name" type="text" id="firstName" class="floating-input" />
-          <label for="firstName" class="floating-label">First Name</label>
+          <label for="firstName" class="floating-label">Vorname</label>
         </div>
 
         <!-- Last Name -->
         <div class="floating-group">
           <input v-model="order.customer.last_name" type="text" id="lastName" class="floating-input" />
-          <label for="lastName" class="floating-label">Last Name</label>
+          <label for="lastName" class="floating-label">Nachname</label>
         </div>
 
       </div>
@@ -168,19 +168,19 @@
       <!-- EMAIL -->
       <div class="floating-group">
         <input v-model="order.customer.email" type="email" id="email" class="floating-input" />
-        <label for="email" class="floating-label">Email Address</label>
+        <label for="email" class="floating-label">E-Mail-Adresse</label>
       </div>
 
       <!-- PHONE -->
       <div class="floating-group">
         <input v-model="order.customer.phone" type="text" id="phone" class="floating-input" />
-        <label for="phone" class="floating-label">Phone Number</label>
+        <label for="phone" class="floating-label">Telefonnummer</label>
       </div>
 
       <!-- ADDRESS -->
       <div class="floating-group">
         <input v-model="order.customer.address" type="text" id="address" class="floating-input" />
-        <label for="address" class="floating-label">Street & House Number</label>
+        <label for="address" class="floating-label">Straße & Hausnummer</label>
       </div>
 
       <!-- ZIP + CITY -->
@@ -188,20 +188,20 @@
 
         <div class="floating-group">
           <input v-model="order.customer.postal_code" type="text" id="zip" class="floating-input" />
-          <label for="zip" class="floating-label">Postal Code</label>
+          <label for="zip" class="floating-label">PLZ</label>
         </div>
 
         <div class="floating-group">
           <input v-model="order.customer.city" type="text" id="city" class="floating-input" />
-          <label for="city" class="floating-label">City</label>
+          <label for="city" class="floating-label">Stadt</label>
         </div>
 
       </div>
 
       <!-- NAV BUTTONS -->
       <div class="flex justify-between pt-2">
-        <button class="btn-secondary" @click="step = 1">Back</button>
-        <button class="btn-primary" @click="validateStep2">Next</button>
+        <button class="btn-secondary" @click="step = 1">Zurück</button>
+        <button class="btn-primary" @click="validateStep2">Weiter</button>
       </div>
 
     </div>
@@ -209,7 +209,7 @@
 
     <!-- STEP 3 – Payment -->
     <div v-if="step === 3" class="space-y-6 bg-white/10 p-5 rounded-xl shadow">
-      <h2 class="text-xl font-semibold text-center">Select Payment Method</h2>
+      <h2 class="text-xl font-semibold text-center">Zahlungsmethode wählen</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
@@ -218,34 +218,34 @@
           @click="selectPayment('paypal')">
           <img src="/paypal.svg" alt="PayPal" class="h-14 mx-auto" />
           <div class="text-center font-bold mt-2">PayPal</div>
-          <p class="text-xs text-gray-300 text-center mt-1">Secure purchase protection</p>
+          <p class="text-xs text-gray-300 text-center mt-1">Sicherer Käuferschutz</p>
         </div>
 
         <!-- STRIPE -->
         <div class="payment-card" :class="{ 'payment-active': order.payment_method === 'stripe' }"
           @click="selectPayment('stripe')">
           <img src="/card.png" alt="Stripe" class="h-14 mx-auto" />
-          <div class="text-center font-bold mt-2">Credit Card (Stripe)</div>
-          <p class="text-xs text-gray-300 text-center mt-1">Visa • Mastercard • Amex</p>
+          <div class="text-center font-bold mt-2">Kartenzahlung</div>
+          <p class="text-xs text-gray-300 text-center mt-1">Visa • Mastercard • Debit</p>
         </div>
 
         <!-- CASH -->
         <div class="payment-card" :class="{ 'payment-active': order.payment_method === 'cash' }"
           @click="selectPayment('cash')">
-          <img src="/cash.png" alt="Cash" class="h-14 mx-auto" />
-          <div class="text-center font-bold mt-2">Cash</div>
-          <p class="text-xs text-gray-300 text-center mt-1">Pay at delivery</p>
+          <img src="/cash.png" alt="Barzahlung" class="h-14 mx-auto" />
+          <div class="text-center font-bold mt-2">Barzahlung</div>
+          <p class="text-xs text-gray-300 text-center mt-1">Bezahlung bei Lieferung</p>
         </div>
 
       </div>
 
       <div class="flex justify-between mt-6">
-        <button class="btn-secondary" @click="step = 2">Back</button>
+        <button class="btn-secondary" @click="step = 2">Zurück</button>
 
         <button class="btn-primary" :disabled="!order.payment_method"
           :class="{ 'opacity-50 cursor-not-allowed': !order.payment_method }"
           @click="order.payment_method && clickToPayment()">
-          Continue
+          Fortfahren
         </button>
       </div>
     </div>
@@ -257,12 +257,13 @@
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
         </svg>
-        Processing...
+        Verarbeitung läuft...
       </span>
     </div>
 
   </div>
 </template>
+
 
 <style scoped>
 .payment-card {
@@ -540,6 +541,11 @@ const selectPayment = (method: OrderPayment) => {
 }
 
 const clickToPayment = async (): Promise<void> => {
+  if (!order.value.payment_method)
+    return;
+
+  step.value = 4
+
   try {
     const res = await fetch(`${apiUrl}/checkout`, {
       method: 'POST',
@@ -551,12 +557,14 @@ const clickToPayment = async (): Promise<void> => {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
 
+    console.log("oki doki")
+
     const data: PaymentResponse = await res.json()
     paymentResponse.value = data
 
-    step.value = 4
     proceedToPayment()
   } catch (e) {
+    step.value = 3
     console.error("Payment submission failed:", e)
   }
 }

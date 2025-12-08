@@ -1,0 +1,16 @@
+# robots.txt für Nordmanntannen Shop
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://ihre-domain.de/sitemap.xml
+
+# Optional: Crawl-Delay für bestimmte Bots
+# User-agent: Googlebot
+# Crawl-delay: 0
+
+# Wichtige Seiten hervorheben (optional)
+Allow: /order
+Allow: /status
+Allow: /kontakt
+Allow: /impressum

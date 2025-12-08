@@ -11,10 +11,27 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
+    {
+      name: 'copy-static-files',
+      closeBundle() {
+        // Diese Dateien werden automatisch aus /public kopiert
+        console.log('✓ robots.txt und sitemap.xml werden automatisch kopiert')
+      }
+    }
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
+    }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // Bessere Dateinamen für SEO
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
+      }
+    }
   },
 })

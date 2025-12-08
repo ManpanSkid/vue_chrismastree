@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage - Höchste Priorität -->
+  <url>
+    <loc>https://www.deinweihnachstbaum.de/</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Bestellseite - Sehr wichtig -->
+  <url>
+    <loc>https://www.deinweihnachstbaum.de/order</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Statusseite -->
+  <url>
+    <loc>https://www.deinweihnachstbaum.de/status</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Kontaktseite -->
+  <url>
+    <loc>https://www.deinweihnachstbaum.de/kontakt</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Impressum -->
+  <url>
+    <loc>https://www.deinweihnachstbaum.de/impressum</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

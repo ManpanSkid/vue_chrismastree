@@ -18,29 +18,17 @@
 
                 <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-[#052809]">
                     <span class="inline-block p-3 text-[#40ac0a] rounded-lg bg-blue-100/80 dark:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                        </svg>
+                        <img class="w-5 h-5" src="/icons/delivery.svg" alt="delivery icon"/>
                     </span>
 
                     <h2 class="mt-4 text-base font-medium text-[#052809] dark:text-white">Bestelle jetzt dein Baum</h2>
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">We’re here to help.</p>
-                    <RouterLink to="/order" class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">jetzt Bestellen</RouterLink>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Wir sind hier zu helfen.</p>
+                    <RouterLink to="/order" class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">Jetzt Bestellen</RouterLink>
                 </div>
 
                 <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-[#052809]">
                     <span class="inline-block p-3 text-[#40ac0a] rounded-lg bg-blue-100/80 dark:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                        </svg>
+                        <img src="/icons/status.svg" class="fill-[#40ac0a] w-5 h-5" alt="status icon">
                     </span>
 
                     <h2 class="mt-4 text-base font-medium text-[#052809] dark:text-white">Status</h2>
@@ -50,12 +38,12 @@
 
                 <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-[#052809]">
                     <span class="inline-block p-3 text-[#40ac0a] rounded-lg bg-blue-100/80 dark:bg-gray-700">
-                        <img src="/icons/status.svg" class="fill-[#40ac0a] w-5 h-5">
+                        <img src="/icons/phone.svg" class="fill-[#40ac0a] w-5 h-5" alt="telefon icon">
                     </span>
 
-                    <h2 class="mt-4 text-base font-medium text-[#052809] dark:text-white">Call us</h2>
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Mon-Fri from 8am to 5pm.</p>
-                    <a href="tel:+491234567890"  class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">Jetzt Anrufen</a>
+                    <h2 class="mt-4 text-base font-medium text-[#052809] dark:text-white">Einfach Anrufen</h2>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Montag-Freitag 8Uhr bis 20Uhr</p>
+                    <a href="tel:+4915129545560"  class="mt-2 text-sm text-[#40ac0a] dark:text-[#40ac0a]">Jetzt Anrufen</a>
                 </div>
             </div>
         </div>

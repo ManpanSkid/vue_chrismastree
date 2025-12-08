@@ -2,43 +2,46 @@
     <section class="py-24 relative bg-[#173305]" id="about-us">
         <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
             <div class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1">
-                
+
                 <!-- Images -->
-                <div class="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
+                <div
+                    class="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
                     <div class="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                        <img class="rounded-xl object-cover" src="/tree_packed.jfif" alt="Weihnachtsbaum Lieferung verpackt" />
+                        <img class="rounded-xl object-cover" src="/tree_packed.jfif"
+                            alt="Weihnachtsbaum Lieferung verpackt" />
                     </div>
-                    <img class="sm:ml-0 ml-auto rounded-xl object-cover aspect-2/3"
-                        src="/tree_unpacked.jfif" alt="Frischer Weihnachtsbaum ausgepackt" />
+                    <img class="sm:ml-0 ml-auto rounded-xl object-cover aspect-2/3" src="/tree_unpacked.jfif"
+                        alt="Frischer Weihnachtsbaum ausgepackt" />
                 </div>
 
                 <!-- Text -->
                 <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                     <div class="w-full flex-col justify-center items-start gap-8 flex">
                         <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                            <h2 class="text-white text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
-                                Frische Bäume, echte Tradition
+                            <h2
+                                class="text-white text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+                                Frische Bäume, wachsende Tradition
                             </h2>
                             <p class="text-gray-400 text-base font-normal leading-relaxed lg:text-start text-center">
-                                Seit Jahren bringen wir Weihnachtszauber direkt in die Wohnzimmer unserer Kunden. 
-                                Unsere Bäume stammen aus regionalem, nachhaltigem Anbau und werden frisch geschlagen, 
-                                sorgfältig verpackt und pünktlich geliefert. Qualität, Service und Leidenschaft stehen bei uns im Mittelpunkt.
+                                Als junge Unternehmer legen wir großen Wert auf Qualität. Unsere Bäume wählen wir aus
+                                verlässlichen Bezugsquellen. Wir suchen jeden Baum sorgfältig aus, prüfen seine Qualität
+                                und liefern ihn bequem in ihr Wohnzimmer.
                             </p>
                         </div>
 
                         <!-- Stats -->
                         <div class="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
                             <div class="flex-col justify-start items-start inline-flex">
-                                <h3 class="text-white text-4xl font-bold font-manrope leading-normal">3+</h3>
-                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Lieferanten</h6>
+                                <h3 class="text-white text-4xl font-bold font-manrope leading-normal">1</h3>
+                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Lieferant</h6>
                             </div>
                             <div class="flex-col justify-start items-start inline-flex">
-                                <h4 class="text-white text-4xl font-bold font-manrope leading-normal">100+</h4>
-                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Gelieferte Bäume</h6>
+                                <h4 class="text-white text-4xl font-bold font-manrope leading-normal">100%</h4>
+                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Engament</h6>
                             </div>
                             <div class="flex-col justify-start items-start inline-flex">
-                                <h4 class="text-white text-4xl font-bold font-manrope leading-normal">98%</h4>
-                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Zufriedene Kunden</h6>
+                                <h4 class="text-white text-4xl font-bold font-manrope leading-normal">24/7</h4>
+                                <h6 class="text-gray-400 text-base font-normal leading-relaxed">Online bestellen</h6>
                             </div>
                         </div>
                     </div>
