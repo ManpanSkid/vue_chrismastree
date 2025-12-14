@@ -47,10 +47,10 @@
                     </div>
 
                     <!-- Button -->
-                    <button
+                    <RouterLink to="/order"
                         class="sm:w-fit w-full px-3.5 py-2 bg-[#d41616] hover:bg-[#fb4242] transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] justify-center items-center flex">
                         <span class="px-1.5 text-white text-sm font-medium leading-6">Jetzt bestellen</span>
-                    </button>
+                    </RouterLink>
                 </div>
 
             </div>

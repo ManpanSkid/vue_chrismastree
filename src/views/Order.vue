@@ -14,22 +14,14 @@
       <div>
         <h3 class="font-medium mb-3">Baumart</h3>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-          <!-- Nordmann Card -->
-          <div class="option-card" :class="{ active: order.tree === 'nordmann' }" @click="order.tree = 'nordmann'">
+        <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
+          <div
+            class="option-card active cursor-default"
+          >
             <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Nordmann Baum" />
             <div class="text-center font-bold mt-2">Nordmann</div>
-            <div class="text-sm text-gray-200">Starke Nadeln, Premium-Qualität</div>
+            <div class="text-sm text-gray-200">Premium Qualität</div>
           </div>
-
-          <!-- Spruce Card -->
-          <div class="option-card" :class="{ active: order.tree === 'spruce' }" @click="order.tree = 'spruce'">
-            <img src="/nordmann.jpg" class="h-20 mx-auto" alt="Fichte" />
-            <div class="text-center font-bold mt-2">Fichte</div>
-            <div class="text-sm text-gray-200">Traditionell und aromatisch</div>
-          </div>
-
         </div>
       </div>
 
@@ -37,20 +29,20 @@
       <div>
         <h3 class="font-medium mb-3">Baumgröße</h3>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+
+          <div class="option-card" :class="{ active: order.size === 'xs' }" @click="order.size = 'xs'">
+            <div class="font-bold text-center">XS</div>
+            <div class="text-center text-sm text-green-300">€{{ prices.Size.XSmall }}</div>
+          </div>
 
           <div class="option-card" :class="{ active: order.size === 's' }" @click="order.size = 's'">
-            <div class="font-bold text-center">Klein</div>
+            <div class="font-bold text-center">S</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Small }}</div>
           </div>
 
-          <div class="option-card" :class="{ active: order.size === 'm' }" @click="order.size = 'm'">
-            <div class="font-bold text-center">Mittel</div>
-            <div class="text-center text-sm text-green-300">€{{ prices.Size.Medium }}</div>
-          </div>
-
           <div class="option-card" :class="{ active: order.size === 'l' }" @click="order.size = 'l'">
-            <div class="font-bold text-center">Groß</div>
+            <div class="font-bold text-center">L</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Large }}</div>
           </div>
 
@@ -59,31 +51,36 @@
             <div class="text-center text-sm text-green-300">€{{ prices.Size.XLarge }}</div>
           </div>
 
+          <div class="option-card" :class="{ active: order.size === 'xxl' }" @click="order.size = 'xxl'">
+            <div class="font-bold text-center">XXL</div>
+            <div class="text-center text-sm text-green-300">€{{ prices.Size.XXLarge }}</div>
+          </div>
+
         </div>
       </div>
 
       <!-- PACKAGE -->
       <div>
-        <h3 class="font-medium mb-3">Paket</h3>
+        <h3 class="font-medium mb-3">Lieferumfang</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
           <div class="option-card" :class="{ active: order.package === 'basic' }" @click="order.package = 'basic'">
             <div class="font-bold text-center">Basic</div>
-            <div class="text-sm text-gray-200 text-center">Nur der Baum</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Package.Basic }}</div>
+            <div class="text-center">Lieferung</div>
+            <div class="text-green-300 text-center">€{{ prices.Package.Basic }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.package === 'extra' }" @click="order.package = 'extra'">
             <div class="font-bold text-center">Extra</div>
-            <div class="text-sm text-gray-200 text-center">Aufbau inklusive</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Package.Extra }}</div>
+            <div class="text-center">Lieferung + Aufstellen</div>
+            <div class="text-green-300 text-center">€{{ prices.Package.Extra }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.package === 'full' }" @click="order.package = 'full'">
-            <div class="font-bold text-center">Full</div>
-            <div class="text-sm text-gray-200 text-center">Aufbau + Abholung</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Package.Full }}</div>
+            <div class="font-bold text-center">Rundum</div>
+            <div class="text-center">Lieferung + Aufstellen + Entsorung</div>
+            <div class="text-green-300 text-center">€{{ prices.Package.Full }}</div>
           </div>
 
         </div>
@@ -96,52 +93,35 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 
           <div class="option-card" :class="{ active: order.delivery === 'standard' }"
-            @click="order.delivery = 'standard'">
+               @click="order.delivery = 'standard'">
             <div class="text-center font-bold">Standard</div>
-            <div class="text-gray-200 text-sm text-center">2–3 Tage</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Standard }}</div>
-          </div>
-
-          <div class="option-card" :class="{ active: order.delivery === 'fast' }" @click="order.delivery = 'fast'">
-            <div class="text-center font-bold">Schnell</div>
-            <div class="text-gray-200 text-sm text-center">Nächster Tag</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Fast }}</div>
+            <div class="text-green-300 text-center">€{{ prices.Delivery.Standard }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.delivery === 'express' }"
-            @click="order.delivery = 'express'">
-            <div class="text-center font-bold">Express</div>
-            <div class="text-gray-200 text-sm text-center">Gleicher Tag</div>
-            <div class="text-green-300 text-center mt-1">€{{ prices.Delivery.Express }}</div>
+               @click="order.delivery = 'express'">
+            <div class="text-center font-bold">Schnell</div>
+            <div class="text-green-300 text-center">€{{ prices.Delivery.Fast }}</div>
+          </div>
+
+          <div class="option-card" :class="{ active: order.delivery === 'sofort' }"
+               @click="order.delivery = 'sofort'">
+            <div class="text-center font-bold">Sofort</div>
+            <div class="text-green-300 text-center">€{{ prices.Delivery.Express }}</div>
           </div>
 
         </div>
       </div>
 
       <!-- TREE STAND -->
-      <div>
-        <label
-          class="flex items-center gap-3 cursor-pointer bg-white/5 p-3 rounded-lg border border-white/10 hover:bg-white/20 transition">
-          <input type="checkbox" class="form-checkbox h-5 w-5" v-model="order.tree_stand" />
-          <div>
-            <div class="font-bold">Christbaumständer</div>
-            <div class="text-sm text-gray-200">Stabiler Metallständer</div>
-            <div class="text-green-300">€{{ prices.treeStand }}</div>
-          </div>
-        </label>
-      </div>
+      <label class="flex items-center gap-3 bg-white/5 p-3 rounded-lg cursor-pointer">
+        <input type="checkbox" v-model="order.tree_stand" />
+        <span>Christbaumständer (+€{{ prices.treeStand }})</span>
+      </label>
 
-      <!-- NEXT -->
-      <button class="px-4 py-2 text-base font-bold rounded bg-green-400 text-black hover:bg-green-300 w-full"
-        @click="step = 2">
-        Weiter
-      </button>
-
+      <button class="btn-primary w-full" @click="step = 2">Weiter</button>
     </div>
-
-
-
-    <!-- STEP 2 – Personal Data -->
+<!-- STEP 2 – Personal Data -->
     <div v-if="step === 2" class="bg-white/10 p-6 rounded-xl shadow space-y-6">
 
       <h2 class="text-xl font-semibold text-center">Ihre Daten</h2>
@@ -211,15 +191,15 @@
     <div v-if="step === 3" class="space-y-6 bg-white/10 p-5 rounded-xl shadow">
       <h2 class="text-xl font-semibold text-center">Zahlungsmethode wählen</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <!-- PAYPAL -->
-        <div class="payment-card" :class="{ 'payment-active': order.payment_method === 'paypal' }"
+        <!-- <div class="payment-card" :class="{ 'payment-active': order.payment_method === 'paypal' }"
           @click="selectPayment('paypal')">
           <img src="/paypal.svg" alt="PayPal" class="h-14 mx-auto" />
           <div class="text-center font-bold mt-2">PayPal</div>
           <p class="text-xs text-gray-300 text-center mt-1">Sicherer Käuferschutz</p>
-        </div>
+        </div> -->
 
         <!-- STRIPE -->
         <div class="payment-card" :class="{ 'payment-active': order.payment_method === 'stripe' }"
@@ -404,13 +384,13 @@ import { ref, computed } from 'vue'
 const apiUrl: string = import.meta.env.VITE_API_BASE_URL;
 
 // --- 1. Define Price Types ---
-type TreeTypeKey = "Nordmann" | "Spruce";
-type SizeKey = "Small" | "Medium" | "Large" | "XLarge";
+type TreeKey = "Nordmann";
+type SizeKey = "XSmall" | "Small" | "Large" | "XLarge" | "XXLarge";
 type PackageKey = "Basic" | "Extra" | "Full";
 type DeliveryKey = "Standard" | "Fast" | "Express";
 
 interface Prices {
-  Tree: Record<TreeTypeKey, number>;
+  Tree: Record<TreeKey, number>;
   Size: Record<SizeKey, number>;
   Package: Record<PackageKey, number>;
   Delivery: Record<DeliveryKey, number>;
@@ -418,18 +398,38 @@ interface Prices {
 }
 
 const prices: Prices = {
-  Tree: { Nordmann: 1, Spruce: 0.7 },
-  Size: { Small: 35.87, Medium: 49.92, Large: 65.76, XLarge: 79.89 },
-  Package: { Basic: 33.23, Extra: 41.36, Full: 55.78 },
-  Delivery: { Standard: 0, Fast: 8.85, Express: 24.67 },
-  treeStand: 35.99
+  Tree: {
+    Nordmann: 1
+  },
+
+  Size: {
+    XSmall: 50,
+    Small: 40,
+    Large: 60,
+    XLarge: 75,
+    XXLarge: 85
+  },
+
+  Package: {
+    Basic: 0,
+    Extra: 10,
+    Full: 30
+  },
+
+  Delivery: {
+    Standard: 0,
+    Fast: 10,
+    Express: 30
+  },
+
+  treeStand: 25
 }
 
 // --- 2. Define Order Types ---
-type OrderTree = 'nordmann' | 'spruce';
-type OrderSize = 's' | 'm' | 'l' | 'xl';
+type OrderTree = 'nordmann';
+type OrderSize = 'xs' | 's' | 'l' | 'xl' | 'xxl';
 type OrderPackage = 'basic' | 'extra' | 'full';
-type OrderDelivery = 'standard' | 'fast' | 'express';
+type OrderDelivery = 'standard' | 'express' | 'sofort';
 type OrderPayment = 'paypal' | 'stripe' | 'cash' | '';
 
 interface Customer {
@@ -474,19 +474,41 @@ interface PaymentResponse {
 const paymentResponse = ref<PaymentResponse | null>(null)
 
 // --- 4. Define Mappers with Types ---
-const treeMap: Record<OrderTree, TreeTypeKey> = { nordmann: "Nordmann", spruce: "Spruce" }
-const sizeMap: Record<OrderSize, SizeKey> = { s: "Small", m: "Medium", l: "Large", xl: "XLarge" }
-const packageMap: Record<OrderPackage, PackageKey> = { basic: "Basic", extra: "Extra", full: "Full" }
-const deliveryMap: Record<OrderDelivery, DeliveryKey> = { standard: "Standard", fast: "Fast", express: "Express" }
+const treeMap: Record<OrderTree, TreeKey> = {
+  nordmann: "Nordmann"
+}
+
+const sizeMap: Record<OrderSize, SizeKey> = {
+  xs: "XSmall",
+  s: "Small",
+  l: "Large",
+  xl: "XLarge",
+  xxl: "XXLarge"
+}
+
+const packageMap: Record<OrderPackage, PackageKey> = {
+  basic: "Basic",
+  extra: "Extra",
+  full: "Full"
+}
+
+const deliveryMap: Record<OrderDelivery, DeliveryKey> = {
+  standard: "Standard",
+  express: "Fast",
+  sofort: "Express"
+}
+
 
 
 /* PRICE CALCULATION */
 const totalPrice = computed((): number => {
-  let total: number = 0
+  let total = 0
 
-  // Tree & Size
-  const treeMultiplier: number = prices.Tree[treeMap[order.value.tree]]
-  total += prices.Size[sizeMap[order.value.size]] * treeMultiplier
+  // Tree (flat price)
+  // total += prices.Tree[treeMap[order.value.tree]]
+
+  // Size
+  total += prices.Size[sizeMap[order.value.size]]
 
   // Package
   total += prices.Package[packageMap[order.value.package]]
