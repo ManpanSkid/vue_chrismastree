@@ -33,26 +33,31 @@
 
           <div class="option-card" :class="{ active: order.size === 'xs' }" @click="order.size = 'xs'">
             <div class="font-bold text-center">XS</div>
+            <div class="text-center">120-155cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.XSmall }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 's' }" @click="order.size = 's'">
             <div class="font-bold text-center">S</div>
+            <div class="text-center">125-150cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Small }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 'l' }" @click="order.size = 'l'">
             <div class="font-bold text-center">L</div>
+            <div class="text-center">150-175cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.Large }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 'xl' }" @click="order.size = 'xl'">
             <div class="font-bold text-center">XL</div>
+            <div class="text-center">175-200cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.XLarge }}</div>
           </div>
 
           <div class="option-card" :class="{ active: order.size === 'xxl' }" @click="order.size = 'xxl'">
             <div class="font-bold text-center">XXL</div>
+            <div class="text-center">200-225cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.XXLarge }}</div>
           </div>
 
