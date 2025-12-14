@@ -408,8 +408,8 @@ const prices: Prices = {
   },
 
   Size: {
-    XSmall: 50,
-    Small: 40,
+    XSmall: 40,
+    Small: 50,
     Large: 60,
     XLarge: 75,
     XXLarge: 85
