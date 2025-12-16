@@ -33,7 +33,7 @@
 
           <div class="option-card" :class="{ active: order.size === 'xs' }" @click="order.size = 'xs'">
             <div class="font-bold text-center">XS</div>
-            <div class="text-center">120-155cm</div>
+            <div class="text-center">100-125cm</div>
             <div class="text-center text-sm text-green-300">€{{ prices.Size.XSmall }}</div>
           </div>
 
